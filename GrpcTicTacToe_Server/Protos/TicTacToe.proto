@@ -1,0 +1,31 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "GrpcTicTacToe_Server";
+
+package TicTacToe;
+
+service TicTacToeServ{
+	rpc PlayTurn (PlaceUnit) returns (GameState);
+	rpc ShowBoard (Null) returns (GameState);
+	rpc CheckState (Null) returns (Result);
+	rpc Reset (Null) returns (Null);
+}
+
+message PlaceUnit{
+	string Unit = 1;
+	int32 row = 2;
+	int32 col = 3;
+}
+
+message GameState{
+	string Board = 1;
+	bool Valid = 2;
+}
+
+message Null{
+
+}
+
+message Result{
+	string result = 1;
+}
